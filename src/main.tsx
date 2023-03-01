@@ -7,7 +7,8 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-console.log(import.meta.env.DEV);
+
+console.log('import.meta.env', import.meta.env);
 if (import.meta.env.DEV) {
   worker.start();
 }

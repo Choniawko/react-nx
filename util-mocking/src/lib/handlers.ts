@@ -7,8 +7,6 @@ export const handlers: RequestHandler[] = [
   }),
   rest.get('/api/items/:id', (req, res, ctx) => {
     const { id } = req.params;
-    console.log('id', id);
-    console.log('items', items);
     const item = items.find((item) => item.id === id);
     if (!item) {
       return res(ctx.status(404));

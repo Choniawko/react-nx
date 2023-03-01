@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   useItemQuery,
@@ -21,13 +22,17 @@ export const Form = ({ id }: FormProps) => {
   const { register, handleSubmit, setValue } = useForm<FormValues>();
   const { mutate: updateItem, isLoading: isUpdating } = useUpdateItemMutation();
   const { data, isLoading, isError, error } = useItemQuery(id);
-  if (data) {
-    setValue('name', data.name);
-    setValue('description', data.description);
-    setValue('price', data.price);
-    setValue('quantity', data.quantity);
-    setValue('category', data.category);
-  }
+  useEffect(() => {
+    if (data) {
+      console.log('data', data);
+      setValue('name', data.name);
+      setValue('description', data.description);
+      setValue('price', data.price);
+      setValue('quantity', data.quantity);
+      setValue('category', data.category);
+    }
+  }, [data, setValue]);
+
   const onSubmit = handleSubmit((values: FormValues) => {
     updateItem({ id, ...values });
   });
@@ -39,7 +44,6 @@ export const Form = ({ id }: FormProps) => {
   if (isLoading) {
     return <div>is loading...</div>;
   }
-
   return (
     <form onSubmit={onSubmit}>
       <div className="input-wrapper">
