@@ -1,16 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-
-import NxWelcome from './nx-welcome';
+import { useParams } from 'react-router-dom';
+import { Form } from './form';
+const defaultId = '1';
 
 export function App() {
-  return (
-    <>
-      <NxWelcome title="standalone-react" />
+  const { id } = useParams<{ id: string }>();
 
-      <div />
-    </>
+  return (
+    <div>
+      <h1>Hello App!</h1>
+      <Form id={id || defaultId} />
+    </div>
   );
 }
-
-export default App;

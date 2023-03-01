@@ -1,7 +1,18 @@
 /// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+
+interface ImportMetaEnv {
+  readonly VITE_APP_TITLE: string;
+  // more env variables...
+}
+
+export interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
 
 export default defineConfig({
   cacheDir: './node_modules/.vite/standalone-react',

@@ -1,0 +1,26 @@
+{
+  "name": "util-mocking",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "util-mocking/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/./util-mocking",
+        "main": "util-mocking/src/index.ts",
+        "tsConfig": "util-mocking/tsconfig.lib.json",
+        "assets": ["util-mocking/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["util-mocking/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

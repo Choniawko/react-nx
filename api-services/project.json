@@ -1,0 +1,31 @@
+{
+  "name": "api-services",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "api-services/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/api-services"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/api-services"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../coverage/api-services"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["api-services/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
